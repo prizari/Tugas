@@ -35,9 +35,13 @@ function renderTodolist() {
         deletebtn.textContent = "Delete"
         deletebtn.classList.add("btn", "btn-error")
 
-        console.log(delay)
-
         li.style.animationDelay = `${delay}s`
+
+        // 🔥 EVENT DELETE
+        deletebtn.addEventListener("click", () => {
+            todos.splice(index, 1) // hapus dari array
+            renderTodolist()   // render ulang
+        })
 
         li.appendChild(span)
         li.appendChild(deletebtn)
@@ -46,8 +50,6 @@ function renderTodolist() {
     }) 
 
    todoListContainer.append(...todoElement)
-
-    console.log(todoElement)
 }
 
 renderTodolist()
